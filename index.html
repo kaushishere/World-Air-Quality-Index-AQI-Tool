@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Explorer</title>
+
+    <!-- Style sheet for popup -->
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/header.css">
+
+    <!-- Leaflet CSS + JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Twemoji; to get country flag emojis to render in popups -->
+    <script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <style>
+        /* Make sure the map fills the whole screen */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map">
+        <header>
+            <div class="search-container">
+                <input class="search-bar" type="text" placeholder='Search "Sydney"'>
+                <button class="search-btn">
+                    <img class="search-icon" src="icons/search.svg" alt="">
+                    <div class="tooltip">Search</div>
+                </button>
+            </div>
+            <button class="random-btn">
+                <img class="random-icon" src="icons/randomise.svg" alt="">
+                <div class="tooltip">Spin the globe!</div>
+            </button>
+            <a role="button" href='compare.html' class="comparison-btn">
+                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <div class="tooltip">After saving multiple places, click here to compare between them</div>
+                <div class="comparison-count"></div>
+            </a>
+        </header>
+        <nav>
+            <div class="nav-title-container">
+                <h3>Air Quality Index (AQI)</h3>
+                <a class="info-btn" href="https://www.airnow.gov/aqi/aqi-basics/">
+                    <img class="info-icon" src="icons/info.svg" alt="">
+                    <div class="tooltip">AQI values shown are according to the US EPA Standard. Click the icon for more
+                        information.</div>
+                </a>
+            </div>
+            <ul class="aqi-scale">
+                <li style="--color: #00E400;"><span>0–50</span> Good</li>
+                <li style="--color: #FFFF00;"><span>51–100</span> Moderate</li>
+                <li style="--color: #FF7E00;"><span>101–150</span> Unhealthy for Sensitive Groups</li>
+                <li style="--color: #FF0000;"><span>151–200</span> Unhealthy</li>
+                <li style="--color: #99004C;"><span>201–300</span> Very Unhealthy</li>
+                <li style="--color: #7E0023;margin-bottom: 0;"><span>301–500</span> Hazardous</li>
+            </ul>
+        </nav>
+    </div>
+    <script src="data/global-variables.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/api-functions.js"></script>
+    <script src="scripts/maps.js"></script>
+    <script src="scripts/popup.js"></script>
+
+
+</body>
+
+
+</html>

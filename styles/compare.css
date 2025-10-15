@@ -1,0 +1,149 @@
+body {
+    background-color: #f9f9f9;
+    margin-left: 85px;
+}
+
+nav {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    width: 72px;
+}
+
+.nav-link {
+    height: 66px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: lightgray;
+}
+
+.nav-link img {
+    height:30px;
+    margin-bottom: 4px;
+}
+
+.nav-link div {
+    font-size: 13px;
+    font-family: Roboto,Arial;
+}
+
+main {
+    margin-top: 5px;
+    margin-left: 85px;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+}
+
+.utils-header {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.utils-header button {
+    margin-right: 20px;
+}
+
+
+.clear-cart-btn,
+.export-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-family: Roboto,Arial;
+}
+
+.clear-cart-btn:active,
+.export-btn:active {
+    transform: scale(0.9);
+}
+
+.table-container {
+    max-height: 300px; 
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+th.sort-asc::after {
+    content: " ▲";
+}
+
+th.sort-desc::after {
+    content: " ▼";
+}
+
+tr img.emoji {
+    height: 28px;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.delete-btn:active {
+    transform: scale(0.9);
+}
+
+.info-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.custom-tooltip {
+  opacity: 0;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  position: absolute;
+  z-index: 10;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.info-wrapper:hover .custom-tooltip {
+  opacity: 1;
+}
+
+.dp-tooltip {
+    left: -100px;
+}
+
