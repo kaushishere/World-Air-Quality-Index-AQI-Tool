@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical AQI</title>
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="styles/shared/header.css">
+    <link rel="stylesheet" href="styles/shared/nav.css">
+    <link rel="stylesheet" href="styles/history/general.css">
+    <link rel="stylesheet" href="styles/history/main.css">
+    <link rel="stylesheet" href="styles/history/top-left.css">
+    <link rel="stylesheet" href="styles/history/date-toggle-box.css">
+    <link rel="stylesheet" href="styles/history/map.css">
+    <link rel="stylesheet" href="styles/history/facts.css">
+
+
+    <!-- Leaflet CSS + JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Twemoji; to get country flag emojis to render in popups -->
+    <script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+
+
+    <!-- Plotly External Library -->
+    <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="main">
+            <div class="top-section">
+                <div id="top-left-section">
+                    <div class="search-container">
+                        <input class="search-bar" type="text" placeholder='Search "Sydney"' id="search-bar">
+                        <button class="search-btn">
+                            <img class="search-icon" src="icons/search.svg" alt="">
+                            <div class="tooltip">Search</div>
+
+                        </button>
+                    </div>
+                    <div class="places-dropdown">
+                        <button id="places-btn">
+                            <span class="show-count">Showing: 0</span>
+                            <i class="fa fa-angle-down" id="arrow-icon"></i>
+                        </button>
+                        <ul id="places-list" class="dropdown dropdown-hidden">
+
+                        </ul>
+                    </div>
+                    <select id="pollutant-select">
+                        <option value="PM2.5">PM2.5</option>
+                        <option value="PM10">PM10</option>
+                        <option value="O3">O3</option>
+                        <option value="NO2">NO2</option>
+                        <option value="SO2">SO2</option>
+                        <option value="CO">CO</option>
+                    </select>
+                    <!-- <div class="cart-btn-container">
+                        <button class="cart-btn">
+                            <i class="fas fa-balance-scale balance-icon"></i>
+                            <div class="tooltip-cart-icon">Switch to Compare Mode</div>
+                        </button>
+                    </div> -->
+                </div>
+                <div class="date-toggle-box">
+                    <div>
+                        <p>Start Date:</p>
+                        <input type="datetime-local" id="start-date">
+                    </div>
+                    <div>
+                        <p>End Date:</p>
+                        <input type="datetime-local" id="end-date">
+                    </div>
+                </div>
+            </div>
+            <div class="mid-section">
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+                <div class="facts-container">
+                    <div class="title">
+                        During the date range:
+                        <span class="place-name">Undefined</span>
+
+                    </div>
+
+                    <div class="highest-aqi-box fact-box">
+                        <div class="fact-label">Highest recorded AQI:</div>
+                        <div class="fact-value">
+                            <span class="aqi-fact-value">Undefined</span><br>
+                            <span class="aqi-fact-time">Undefined</span>
+                        </div>
+                    </div>
+
+                    <div class="dominant-pollutant-box fact-box">
+                        <div class="fact-label">Most frequent dominant pollutant:</div>
+                        <div class="fact-value">
+                            <span class="pollutant-name">Undefined</span><br>
+                            <span class="pollutant-count">Hours count: Undefined</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bot-section">
+                <div class="aqi-chart">
+
+                </div>
+                <div class="p-chart">
+
+                </div>
+
+                <div class="aqi-info-bar-container">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav id="nav"></nav>
+
+    <script src="scripts/history/variables.js"></script>
+    <script src="scripts/shared/load-header.js"></script>
+    <script src="scripts/shared/load-aqi-bar.js"></script>
+    <script src="scripts/history/functions.js"></script>
+    <script src="scripts/history/historical-functions.js"></script>
+    <script src="scripts/history/plotting-functions.js"></script>
+    <script src="scripts/shared/functions.js"></script>
+    <script src="scripts/history/maps.js"></script>
+    <script src="scripts/history/datetime.js"></script>
+</body>
+
+</html>

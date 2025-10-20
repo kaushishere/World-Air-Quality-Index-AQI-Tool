@@ -1,0 +1,147 @@
+body {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+  background-color: #EDF2F7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Section */
+.main-section {
+  text-align: center;
+  width: 80%; /* Increased width */
+  margin: 0 auto;
+  padding: 80px 20px 0;
+}
+
+.main-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #2D3748;
+}
+
+/* Divider Line */
+.section-divider {
+  border: none;
+  border-top: 2px solid #E2E8F0;
+  margin: 20px 0 30px;
+  width: 100%;
+}
+
+/* Subsections */
+.subsection {
+  max-width: 1200px;
+  margin: 60px auto;
+  background-color: white;
+  border-radius: 12px;
+  padding: 40px 60px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.subsection-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2D3748;
+  margin-bottom: 10px;
+}
+
+/* Architecture Section */
+.architecture-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.architecture-text {
+  font-size: 16px;
+  color: #4A5568;
+  line-height: 1.6;
+}
+
+.architecture-image-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  background-color: white;
+  margin: 0 auto;
+}
+
+.architecture-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Google Section */
+.google-text {
+  font-size: 16px;
+  color: #4A5568;
+  line-height: 1.6;
+}
+
+/* Libraries Cards Section */
+.libraries-section {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 40px 60px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.library-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.library-card {
+  background-color: #F9FAFB;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.library-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.library-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0 12px;
+  color: #1A202C;
+}
+
+.library-card p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #4A5568;
+}
+
+.library-image-placeholder {
+    width: 100%;
+    height: 140px; /* adjust if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: transparent; /* remove gray background now */
+}
+
+.library-image-placeholder img.library-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}

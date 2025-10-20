@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current AQI</title>
+
+    <link rel="stylesheet" href="styles/shared/header.css">
+    <link rel="stylesheet" href="styles/current/main.css">
+    <link rel="stylesheet" href="styles/current/general.css">
+    <link rel="stylesheet" href="styles/shared/nav.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <!-- Fonts -->
+
+</head>
+
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="utils-header">
+            <button class="clear-cart-btn">
+                <i class="fas fa-balance-scale"></i>
+                <i class="fa-solid fa-xmark"></i>
+                Clear List
+            </button>
+            <button class="export-btn">
+                <i class="fa-solid fa-download"></i> Export
+                <span class="tooltip"></span>
+            </button>
+        </div>
+        <div>
+            <table id="aqiTable">
+                <thead>
+                    <tr>
+                        <th style="cursor: default;">Flag</th>
+                        <th data-type="string">Place</th>
+                        <th data-type="number">
+                            Current AQI
+                            <span class="info-wrapper">
+                                <i class="fa-solid fa-circle-info info-icon"></i>
+                                <span class="custom-tooltip">Air Quality Index — lower is better</span>
+                            </span>
+                        </th>
+                        <th data-type="string">
+                            Dominant Pollutant
+                            <span class="info-wrapper">
+                                <i class="fa-solid fa-circle-info info-icon"></i>
+                                <span class="custom-tooltip dp-tooltip">Pollutant delivering the largest sub-AQI</span>
+                            </span>
+                        </th>
+                        <th style="cursor:default;">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div id="nav"></div>
+    </main>
+    <script src="scripts/current/current.js"></script>
+    <script src="scripts/shared/load-header.js"></script>
+    <script src="scripts/shared/load-aqi-bar.js"></script>
+</body>
+
+</html>

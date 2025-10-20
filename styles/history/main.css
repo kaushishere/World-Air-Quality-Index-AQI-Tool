@@ -1,0 +1,47 @@
+.main {
+    margin-top: 70px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - (70px + 20px));
+    width: calc(100vw - (40px + 40px));
+}
+.top-section {
+    width: auto;
+    flex: 0.4;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.mid-section {
+    width: auto;
+    flex: 4.5;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.map-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#map {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.bot-section {
+    width: auto;
+    flex: 3.5;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 0.35fr;
+}
+
+.pollutants-chart {
+    margin-left: 200px;
+}
+
+

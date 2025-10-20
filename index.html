@@ -7,9 +7,11 @@
     <title>AQI Explorer</title>
 
     <!-- Style sheet for popup -->
-    <link rel="stylesheet" href="styles/index.css">
-    <link rel="stylesheet" href="styles/sidebar.css">
-    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/index/main.css">
+    <link rel="stylesheet" href="styles/shared/nav.css">
+    <link rel="stylesheet" href="styles/index/header.css">
+    <link rel="stylesheet" href="styles/index/general.css">
+    <link rel="stylesheet" href="styles/index/introjs.css">
 
     <!-- Leaflet CSS + JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -27,6 +29,9 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <!-- Intro.js -->
+    <script src="https://unpkg.com/intro.js/intro.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
 
     <style>
         /* Make sure the map fills the whole screen */
@@ -58,37 +63,22 @@
                 <img class="random-icon" src="icons/randomise.svg" alt="">
                 <div class="tooltip">Spin the globe!</div>
             </button>
-            <a role="button" href='compare.html' class="comparison-btn">
-                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+            <a role="button" href='current.html' class="comparison-btn">
+                <i class="fas fa-balance-scale cart-icon"></i>
                 <div class="tooltip">After saving multiple places, click here to compare between them</div>
                 <div class="comparison-count"></div>
             </a>
         </header>
-        <nav>
-            <div class="nav-title-container">
-                <h3>Air Quality Index (AQI)</h3>
-                <a class="info-btn" href="https://www.airnow.gov/aqi/aqi-basics/">
-                    <img class="info-icon" src="icons/info.svg" alt="">
-                    <div class="tooltip">AQI values shown are according to the US EPA Standard. Click the icon for more
-                        information.</div>
-                </a>
-            </div>
-            <ul class="aqi-scale">
-                <li style="--color: #00E400;"><span>0–50</span> Good</li>
-                <li style="--color: #FFFF00;"><span>51–100</span> Moderate</li>
-                <li style="--color: #FF7E00;"><span>101–150</span> Unhealthy for Sensitive Groups</li>
-                <li style="--color: #FF0000;"><span>151–200</span> Unhealthy</li>
-                <li style="--color: #99004C;"><span>201–300</span> Very Unhealthy</li>
-                <li style="--color: #7E0023;margin-bottom: 0;"><span>301–500</span> Hazardous</li>
-            </ul>
-        </nav>
+        <div id="nav"></div>
     </div>
-    <script src="data/global-variables.js"></script>
-    <script src="scripts/functions.js"></script>
-    <script src="scripts/api-functions.js"></script>
-    <script src="scripts/maps.js"></script>
-    <script src="scripts/popup.js"></script>
-
+    <script src="scripts/index/variables.js"></script>
+    <script src="scripts/index/functions.js"></script>
+    <script src="scripts/index/maps.js"></script>
+    <script src="scripts/index/api-functions.js"></script>
+    <script src="scripts/shared/functions.js"></script>
+    <script src="scripts/index/popup.js"></script>
+    <script src="scripts/index/introjs.js"></script>
+    <script src="scripts/shared/load-aqi-bar.js"></script>
 
 </body>
 

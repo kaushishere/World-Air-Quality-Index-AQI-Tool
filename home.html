@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="styles/shared/header.css">
+    <link rel="stylesheet" href="styles/home/general.css">
+    <link rel="stylesheet" href="styles/home/main.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main>
+        <section class="main-section">
+            <h1 class="main-title">How Does the Tool Work?</h1>
+        </section>
+
+        <section class="subsection architecture-section">
+            <h2 class="subsection-title">System Architecture</h2>
+            <hr class="section-divider">
+            <div class="architecture-content">
+                <p class="architecture-text">
+                    The system architecture is fronted by an API Gateway with 3 different endpoints, mimicking the
+                    set-up of Google's endpoints. The Lambda function then handles events according to the exact API
+                    Gateway endpoint path the browser's request was sent to (e.g. path "/get-current" causes Lambda to
+                    call the
+                    "get-current" Google endpoint).
+                </p>
+                <div class="architecture-image-container">
+                    <img src="media/architecture.png" alt="System Architecture Diagram" class="architecture-image">
+                </div>
+                <p class="architecture-text">
+                    Lambda authenticates by providing the API key which is pulled from Secrets Manager. Currently, this
+                    is using my personal Google API key.
+                </p>
+            </div>
+        </section>
+
+        <section class="subsection google-section">
+            <h2 class="subsection-title">Google Air Quality API Endpoint</h2>
+            <hr class="section-divider">
+            <p class="google-text">
+                Google's Air Quality API allows you to request air quality data for a specific location including: more
+                than
+                70 AQ indexes <b>(only the US EPA standard is shown here)</b>, pollutants, and health recommendations.
+                It
+                covers over 100 countries with a resolution of
+                500 x 500 meters.
+            </p>
+        </section>
+
+        <section class="subsection libraries-section">
+            <h2 class="subsection-title">Libraries Used</h2>
+            <hr class="section-divider">
+            <div class="library-cards">
+                <!-- Plotly Card -->
+                <div class="library-card">
+                    <div class="library-image-placeholder">
+                        <img src="media/plotly.png" alt="" class="library-image">
+                    </div>
+                    <h3>Plotly.js</h3>
+                    <p>
+                        Plotly.js provide responsive line charts that showcase trends, enabling users to visually
+                        compare air pollution between places.
+                    </p>
+                </div>
+
+                <!-- Leaflet Card -->
+                <div class="library-card">
+                    <div class="library-image-placeholder">
+                        <img src="media/leaflet.png" alt="" class="library-image">
+
+                    </div>
+                    <h3>Leaflet.js</h3>
+                    <p>
+                        Leaflet.js give users interactive maps with markers and popups to explore AQI around the world.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+
+    <script src="scripts/shared/load-header.js"></script>
+</body>
+
+</html>

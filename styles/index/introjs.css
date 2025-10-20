@@ -1,0 +1,5 @@
+.introjs-tooltip {
+  width: fit-content !important;
+  max-width: 90vw !important;
+  overflow: visible !important;
+}

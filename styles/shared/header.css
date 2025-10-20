@@ -1,0 +1,89 @@
+.header-class {
+    background-color: white;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.left-section {
+    width: 200px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding-inline-start: 20px;
+}
+
+.header-link-container,
+.globe-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.header-link-btn,
+.header-globe-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.header-link-btn:hover,
+.header-globe-btn:hover {
+    cursor: pointer;
+}
+
+.header-link-btn .tooltip,
+.header-globe-btn .tooltip {
+    position: absolute;
+    bottom: -35px;
+    background-color: rgb(97, 95, 95);
+    font-size: 12px;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.header-link-btn:hover .tooltip,
+.header-globe-btn:hover .tooltip {
+    opacity: 1;
+}
+
+.middle-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle-section a {
+    display: inline-flex;
+    text-decoration: none;
+    padding-inline-start: 30px;
+    padding-inline-end: 30px;
+    color: #718096;
+    font-size: 16px;
+}
+
+.header-link-btn {
+    display: inline-flex;
+    text-decoration: none;
+    color: #718096;
+    font-size: 16px;
+}
+
+.middle-section a.active .header-link-btn {
+    color:#e61e28;
+}
+
+.right-section {
+    width: 250px;
+    flex-shrink: 0;
+}

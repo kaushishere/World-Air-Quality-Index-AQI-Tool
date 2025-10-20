@@ -1,0 +1,30 @@
+.date-toggle-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.date-toggle-box div {
+    display: flex;
+    align-items: center;
+}
+
+.date-toggle-box input {
+    padding-left: 4px;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid black;
+    background-color: transparent;
+    font-size: 14px;
+    height: 30px;
+}
+
+.date-toggle-box p{
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 6px 0 0 6px;
+    height: 30px;
+    vertical-align: center;
+    border-right: 0;
+    padding: 4px 6px;
+}
