@@ -1,0 +1,99 @@
+.facts-container {
+    display: grid;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 16px;
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    margin: 20px auto;
+    font-family: 'Inter', sans-serif;
+    color: #222;
+}
+
+/* Title */
+.facts-container .title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3748;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.model-description-box {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Fact box */
+.fact-box {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fact-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Left label column */
+.fact-label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+/* Right value column */
+.fact-value {
+    text-align: right;
+    font-size: 15px;
+}
+
+/* Specific highlight styles */
+.aqi-fact-value {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.pollutant-name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.aqi-fact-time,
+.pollutant-count {
+    font-size: 13px;
+    color: #718096;
+}
+
+.facts-container .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.model-training-time {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.flash-message {
+  color: red;                  /* eye-catching color */
+  font-weight: bold;           /* make it stand out */
+  animation: flash 3s linear infinite;
+}
+
+@keyframes flash {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}

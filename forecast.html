@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast AQI</title>
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="styles/shared/header.css">
+    <link rel="stylesheet" href="styles/forecast/nav.css">
+    <link rel="stylesheet" href="styles/forecast/general.css">
+    <link rel="stylesheet" href="styles/forecast/main.css">
+    <link rel="stylesheet" href="styles/forecast/top-left.css">
+    <link rel="stylesheet" href="styles/forecast/map.css">
+    <link rel="stylesheet" href="styles/forecast/facts.css">
+
+
+    <!-- Leaflet CSS + JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Twemoji; to get country flag emojis to render in popups -->
+    <script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+
+
+    <!-- Plotly External Library -->
+    <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="main">
+            <div class="top-section">
+                <div id="top-left-section">
+                    <div class="search-container">
+                        <input class="search-bar" type="text" placeholder='Search "Sydney"' id="search-bar">
+                        <button class="search-btn">
+                            <img class="search-icon" src="icons/search.svg" alt="">
+                            <div class="tooltip">Search</div>
+
+                        </button>
+                    </div>
+                    <div id="model-select-box">
+                        <select id="model-select">
+                            <option value="DeepAR_2W">DeepAR_2W</option>
+                        </select>
+                        <div class="tooltip">Choose a model for prediction (more models coming soon)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mid-section">
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+                <div class="facts-container">
+                    <div class="title">
+                        Model
+                        <span class="model-training-time">Training dataset size: Undefined</span>
+
+                    </div>
+
+                    <div class="dominant-pollutant-box model-description-box">
+                        <div class="fact-label model-description flash-message">Please click the show button in the map
+                            window to render facts and plots</div>
+                    </div>
+
+                    <div class="highest-aqi-box fact-box">
+                        <div class="fact-label aqi-description">Highest AQI in forecast window:</div>
+                        <div class="fact-value">
+                            <span class="aqi-fact-value">Undefined</span><br>
+                            <span class="aqi-fact-time">Undefined</span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="bot-section">
+                <div id="statusMessage" class="status-message">🔄 Plot updating...</div>
+                <div class="aqi-chart"></div>
+                <nav id="nav"></nav>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="scripts/forecast/variables.js"></script>
+    <script src="scripts/shared/load-header.js"></script>
+    <script src="scripts/shared/load-aqi-bar.js"></script>
+    <script src="scripts/forecast/plotting-functions.js"></script>
+    <script src="scripts/forecast/facts-functions.js"></script>
+    <script src="scripts/forecast/functions.js"></script>
+    <script src="scripts/shared/functions.js"></script>
+    <script src="scripts/forecast/maps.js"></script>
+</body>
+
+</html>

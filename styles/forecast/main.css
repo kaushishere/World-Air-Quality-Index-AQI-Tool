@@ -33,15 +33,33 @@
     margin-right: 10px;
 }
 
+
 .bot-section {
-    width: auto;
-    flex: 3.5;
-    display: grid;
-    grid-template-columns: 1fr 1.1fr minmax(300px,0.35fr);
+  flex: 3.5;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr minmax(300px, 0.35fr); /* 👈 new: set nav min width */
+  grid-template-areas:
+    "statusMessage statusMessage"
+    "chart nav";
+  gap: 1em;
 }
 
-.pollutants-chart {
-    margin-left: 200px;
+
+#statusMessage {
+  grid-area: statusMessage;
+  color: #555;
+  font-style: italic;
+  visibility: hidden; /* keeps space but hides content */
+  height: 1.2em; /* consistent height reservation */
 }
+#statusMessage.show {
+  visibility: visible;
+}
+
+.aqi-chart {
+  grid-area: chart;
+}
+
 
 

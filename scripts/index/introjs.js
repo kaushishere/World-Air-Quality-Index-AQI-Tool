@@ -9,7 +9,7 @@ if (!tutorialWatched) {
             {
                 element: document.querySelector('.search-container'),
                 title: "How do I search?",
-                intro: `<p>Alternatively, click anywhere on the map (please not the <b>oceans</b> - we don't have sensor readings there!)</p><video src="media/index.mp4" autoplay width="1150" />`
+                intro: `<p>Alternatively, click anywhere on the map (please not the <b>oceans</b> - we don't have sensor readings there!)</p><video src="media/index.mp4" autoplay width="720" />`
             },
             {
                 element: document.querySelector('.comparison-btn'),

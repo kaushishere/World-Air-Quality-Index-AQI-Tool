@@ -1,0 +1,118 @@
+#top-left-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex: 1;
+    max-width: 300px;
+}
+
+.search-bar::placeholder {
+    font-size: 14px;
+}
+
+.search-bar {
+    background-color: transparent;
+    border-radius: 12px 0 0 12px;
+    height: 30px;
+    flex: 1;
+    padding-left: 6px;
+    border: 1px solid black;
+    font-size: 14px;
+}
+
+.search-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid black;
+    border-radius: 0 12px 12px 0;
+    border-left: none;
+}
+
+.search-btn {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon {
+    height: 26px;
+}
+
+.search-btn .tooltip {
+    position: absolute;
+    bottom: -35px;
+    background-color: rgb(97, 95, 95);
+    font-size: 12px;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    opacity: 0;
+    white-space: nowrap;
+    z-index: 2000;
+}
+
+.search-btn:hover .tooltip {
+    opacity: 1;
+}
+
+.balance-icon {
+    padding: 5px 2px 7px 0;
+}
+
+.tooltip-cart-icon {
+    position: absolute;
+    bottom: -35px;
+    background-color: rgb(97, 95, 95);
+    font-size: 12px;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    opacity: 0;
+    white-space: nowrap;
+    z-index: 2000;
+}
+
+#model-select-box {
+    margin-left: 30px;
+    position: relative;
+}
+
+#model-select {
+  background-color: transparent;
+  border: 1px solid black;
+  padding: 4.5px 3.5px;
+  border-radius: 10px;
+}
+
+#model-select-box .tooltip {
+    position: absolute;
+    bottom: -35px;
+    background-color: rgb(97, 95, 95);
+    font-size: 12px;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    opacity: 0;
+    white-space: nowrap;
+    z-index: 2000;
+}
+
+#model-select-box:hover .tooltip {
+    opacity: 1;
+}
