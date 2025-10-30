@@ -1,10 +1,3 @@
-// PLOTLY NOTES
-// legend: {
-//     x: 0.77,
-//     y: 0.01,
-//     orientation: 'h',
-//     font: { size: 10 }
-
 function plotAqiChart() {
     const aqichart = document.querySelector('.aqi-chart')
     const aqiChartData = []
@@ -12,11 +5,11 @@ function plotAqiChart() {
 
     showData.forEach(place => {
         const x = place.data.hoursInfo.map(entry => entry.dateTime)
-        const y = place.data.hoursInfo.map(entry => entry.indexes[0].aqi)
+        const y = place.data.hoursInfo.map(entry => entry.indexes?.[0]?.aqi ?? null)
         const ylim = Math.max(...y) * 1.5
         ylimArr.push(ylim)
 
-        let aqiCategories = place.data.hoursInfo.map(entry => entry.indexes[0].category)
+        let aqiCategories = place.data.hoursInfo.map(entry => entry.indexes?.[0]?.category ?? null)
 
         let trace = {
             x,
@@ -74,24 +67,26 @@ function plotPollutantsChart() {
         const hoursInfo = place.data.hoursInfo.map(hour => {
             return {
                 ...hour,
-                pollutants: hour.pollutants.filter(p => {
+                pollutants: (hour.pollutants ?? []).filter(p => {
                     return p.displayName === pollutant
                 })
             }
         })
 
         // units
-        const units_long = hoursInfo[0].pollutants[0].concentration.units
+        const units_long = hoursInfo[0].pollutants?.[0]?.concentration?.units ?? 'undefined'
         if (units_long === 'MICROGRAMS_PER_CUBIC_METER') {
             units = 'µg/m³'
         } else if (units_long === 'PARTS_PER_BILLION') {
             units = 'ppm'
+        } else {
+            units = 'undefined'
         }
 
         // coordinates
         const x = place.data.hoursInfo.map(entry => entry.dateTime)
         const y = hoursInfo.map(hour => {
-            return hour.pollutants[0].concentration.value
+            return hour.pollutants?.[0]?.concentration?.value ?? null
         })
         const ylim = Math.max(...y) * 1.5
         ylimArr.push(ylim)
@@ -162,7 +157,7 @@ function showFacts(cityName) {
 
     // AQI 
     const aqiArray = place.data.hoursInfo.map(hour => {
-        return hour.indexes[0].aqi
+        return hour.indexes?.[0]?.aqi ?? null
     }).reverse()
     const dateArray = place.data.hoursInfo.map(hour => {
         return hour.dateTime
@@ -180,7 +175,7 @@ function showFacts(cityName) {
 
     // [pm2.5, pm2.5, pm10 ...]
     const pArray = place.data.hoursInfo.map(hour => {
-        return hour.indexes[0].dominantPollutant
+        return hour.indexes?.[0]?.dominantPollutant ?? null
     })
 
     // loop through array, changing the maxCount variable
