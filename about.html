@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="styles/shared/header.css">
+    <link rel="stylesheet" href="styles/about/general.css">
+    <link rel="stylesheet" href="styles/about/main.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main>
+        <section class="main-section">
+            <h1 class="main-title">How Does the Tool Work?</h1>
+        </section>
+
+        <section class="subsection architecture-section">
+            <h2 class="subsection-title">System Architecture</h2>
+            <hr class="section-divider">
+            <div class="architecture-content">
+                <p class="architecture-text">
+                    The system architecture is fronted by an API Gateway with 3 different endpoints, mimicking the
+                    set-up of Google's endpoints. The Lambda function then handles events according to the exact API
+                    Gateway endpoint path the browser's request was sent to (e.g. path "/get-current" causes Lambda to
+                    call the
+                    "get-current" Google endpoint).
+                </p>
+                <div class="architecture-image-container">
+                    <img src="media/architecture.png" alt="System Architecture Diagram" class="architecture-image">
+                </div>
+                <p class="architecture-text">
+                    Lambda authenticates by providing the API key which is pulled from Secrets Manager. Currently, this
+                    is using my personal Google API key.
+                </p>
+            </div>
+        </section>
+
+        <section class="subsection google-section">
+            <h2 class="subsection-title">Google Air Quality API Endpoint</h2>
+            <hr class="section-divider">
+            <p class="google-text">
+                Google's Air Quality API allows you to request air quality data for a specific location including: more
+                than
+                70 AQ indexes <b>(only the US EPA standard is shown here)</b>, pollutants, and health recommendations.
+                It
+                covers over 100 countries with a resolution of
+                500 x 500 meters.
+            </p>
+        </section>
+
+        <section class="subsection libraries-section">
+            <h2 class="subsection-title">Libraries Used</h2>
+            <hr class="section-divider">
+            <div class="library-cards">
+                <!-- Plotly Card -->
+                <div class="library-card">
+                    <div class="library-image-placeholder">
+                        <img src="media/plotly.png" alt="" class="library-image">
+                    </div>
+                    <h3>Plotly.js</h3>
+                    <p>
+                        Plotly.js provide responsive line charts that showcase trends, enabling users to visually
+                        compare air pollution between places.
+                    </p>
+                </div>
+
+                <!-- Leaflet Card -->
+                <div class="library-card">
+                    <div class="library-image-placeholder">
+                        <img src="media/leaflet.png" alt="" class="library-image">
+
+                    </div>
+                    <h3>Leaflet.js</h3>
+                    <p>
+                        Leaflet.js give users interactive maps with markers and popups to explore AQI around the world.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="subsection architecture-section">
+            <h2 class="subsection-title">Models</h2>
+            <hr class="section-divider">
+            <h3 class="sub-subsection-title">DeepAR</h3>
+            <div class="architecture-content">
+                <p class="architecture-text">
+                    DeepAR is AWS Sagemaker's built in forecasting algorithm for time series data. It uses recurrent
+                    neural networks under the hood. DeepAR was a serious model candidate because it accepts multiple
+                    time series for training data. In our situation, a single DeepAR model gets fed 5 time series
+                    corresponding to 5 different places (London, Sydney, Paris, Delhi, Munich) and tries to calibrate
+                    its weights to fit the training data. AWS advises users will see benefits of DeepAR over traditional
+                    forecasting algorithms like ARIMA when multiple time series are used.
+                </p>
+                <div class="architecture-image-container">
+                    <img src="media/deepar-pipeline.png" alt="System Architecture Diagram" class="architecture-image">
+                </div>
+                <p class="architecture-text">
+                    Each week a <b>new</b> DeepAR model will be trained on the latest air quality data and then
+                    released. The pipeline above shows this workflow; it executes once every 7:30pm on a Wednesday via a
+                    CRON schedule. You will be able to test the new model via the dropdown on the forecast page. Each
+                    DeepAR model will be given a dedicated suffix to indicate the length of the dataset that the model
+                    trained on For example, "DeepAR_3W" will correspond to a model trained on 3 weeks worth of data.
+                </p>
+                <div class="architecture-text">
+                    <p>
+                        <b>Pipeline breakdown:</b>
+                    <ul>
+                        <li>
+                            The pipeline consists of a tuning step, where 6 training jobs are run to find the optimal
+                            learning
+                            rate.
+                        </li>
+                        <li>
+                            The training job that yielded the best model from the tuning step will be taken forward in
+                            the Create Model step. This model will be registered in the Sagemaker model registry and
+                            created.
+                        </li>
+                        <li>
+                            The final Lambda step is used to invoke a Lambda function to deploy the model to a Sagemaker
+                            Serverless Endpoint. Serverless is chosen so that costs can be kept low in idle periods.
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="architecture-text">
+                    <p>
+                        <b>Fixed hyperparameters:</b>
+                    <ul>
+                        <li>
+                            Time Frequency: 1 hour
+                        </li>
+                        <li>
+                            Epochs: 50
+                        </li>
+                        <li>
+                            Context Length: 24 hours
+                        </li>
+                        <li>
+                            Prediction Length: 24 hours
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="architecture-text">
+                    <p>
+                        <b>Source code: </b>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="subsection architecture-section">
+            <h2 class="subsection-title">In-Development</h2>
+            <hr class="section-divider">
+            <h3 class="sub-subsection-title">Model Monitoring</h3>
+            <div class="architecture-content">
+                <p class="architecture-text">
+                    It is important to convey to the user of the tool how well the model has been performing. Therefore,
+                    there are plans to test the model on unseen data (not the training or evaluation dataset) and record
+                    accuracies. This information will be available in the forecast page when users select a model for
+                    forecasting so they get an idea on how well the model is performing. It is important to be
+                    transparent about what data was used as the test dataset so users are not misled to thinking the
+                    model is extremely accurate. A model might predict air quality well for London but not for New Delhi
+                    where air pollution can swing more rapidly.
+                </p>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+
+    <script src="scripts/shared/load-header.js"></script>
+</body>
+
+</html>
