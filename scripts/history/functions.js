@@ -132,6 +132,8 @@ function removeItem(cityName) {
     showData = showData.filter(place => {
         return place.cityName !== cityName
     })
+    localStorage.setItem('showPlaces', JSON.stringify(showPlaces))
+    localStorage.setItem('showData', JSON.stringify(showData))
 
     // update screen
     renderDropdown()
@@ -186,6 +188,10 @@ async function showBtnHandler(lat, lng, cityName, regionCode, startTime, endTime
             })
         }
     }
+
+    // set local storage items
+    localStorage.setItem('showPlaces', JSON.stringify(showPlaces))
+    localStorage.setItem('showData', JSON.stringify(showData))
 
     // update screen
     showFacts(cityName)

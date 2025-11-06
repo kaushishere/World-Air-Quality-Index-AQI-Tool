@@ -76,15 +76,17 @@ document.getElementById('end-date').addEventListener('change', () => {
 
 
 // search for London when the window first loads, and click the button when it finally appears in the DOM
-window.addEventListener('load', () => {
-    defaultSearch(defaultPlace);
+if (!historyTutorialWatched) {
+    window.addEventListener('load', () => {
+        defaultSearch(defaultPlace);
 
-    const interval = setInterval(() => {
-        const showBtn = document.querySelector('.show-btn');
-        if (showBtn) {
-            showBtn.click();
-            clearInterval(interval); // stop checking
-        }
-    }, 200); // check every 200ms
-});
-
+        const interval = setInterval(() => {
+            const showBtn = document.querySelector('.show-btn');
+            if (showBtn) {
+                showBtn.click();
+                clearInterval(interval); // stop checking
+            }
+        }, 200); // check every 200ms
+    });
+    localStorage.setItem("historyTutorialWatched", true)
+}
