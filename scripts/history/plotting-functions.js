@@ -51,7 +51,42 @@ function plotAqiChart() {
         plot_bgcolor: '#EDF2F7',
         showlegend: false
     }
-    Plotly.newPlot(aqichart, aqiChartData, layout, { responsive: true })
+    Plotly.newPlot(aqichart, aqiChartData, layout, {
+        responsive: true,
+        modeBarButtonsToAdd: [
+            {
+                name: 'Download CSV',
+                icon: Plotly.Icons.disk, // or any Plotly icon
+                click: function (gd) {
+                    // Extract data from the plot
+                    const data = gd.data;
+                    let csvContent = 'data:text/csv;charset=utf-8,';
+
+                    // Build CSV header
+                    csvContent += 'Place,Time,AQI,Category\n';
+
+                    data.forEach(trace => {
+                        const { x, y, text, name } = trace;
+                        for (let i = 0; i < x.length; i++) {
+                            const time = x[i];
+                            const aqi = y[i];
+                            const category = text[i];
+                            csvContent += `${name},${time},${aqi},${category}\n`;
+                        }
+                    });
+
+                    // Trigger download
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', encodedUri);
+                    link.setAttribute('download', 'aqi_data.csv');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            }
+        ]
+    })
 }
 
 function plotPollutantsChart() {
@@ -136,7 +171,41 @@ function plotPollutantsChart() {
         plot_bgcolor: '#EDF2F7'
     }
 
-    Plotly.newPlot(pChart, pChartData, layout, { responsive: true })
+    Plotly.newPlot(pChart, pChartData, layout, {
+        responsive: true,
+        modeBarButtonsToAdd: [
+            {
+                name: 'Download CSV',
+                icon: Plotly.Icons.disk, // or any Plotly icon
+                click: function (gd) {
+                    // Extract data from the plot
+                    const data = gd.data;
+                    let csvContent = 'data:text/csv;charset=utf-8,';
+
+                    // Build CSV header
+                    csvContent += `Place,Time,Pollutant,Concentration (${units})\n`;
+
+                    data.forEach(trace => {
+                        const { x, y, name } = trace;
+                        for (let i = 0; i < x.length; i++) {
+                            const time = x[i];
+                            const concentration = y[i];
+                            csvContent += `${name},${time},${pollutant},${concentration}\n`;
+                        }
+                    });
+
+                    // Trigger download
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', encodedUri);
+                    link.setAttribute('download', 'pollutant_data.csv');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            }
+        ]
+    })
 }
 
 function showFacts(cityName) {

@@ -129,7 +129,42 @@ async function showPlot({ start, history, predictions, place }) {
         ]
     };
 
-    Plotly.newPlot(linechart, linechartData, layout, { responsive: true });
+    Plotly.newPlot(linechart, linechartData, layout, {
+        responsive: true,
+        modeBarButtonsToAdd: [
+            {
+                name: 'Download CSV',
+                icon: Plotly.Icons.disk, // or any Plotly icon
+                click: function (gd) {
+                    // Extract data from the plot
+                    const data = gd.data;
+                    let csvContent = 'data:text/csv;charset=utf-8,';
+
+                    // Build CSV header
+                    csvContent += 'Type,Time,AQI\n';
+
+                    data.forEach(trace => {
+                        const { x, y } = trace;
+                        for (let i = 0; i < x.length; i++) {
+                            const type = i < splitLength ? 'Context' : 'Prediction'
+                            const time = x[i];
+                            const aqi = y[i];
+                            csvContent += `${type},${time},${aqi}\n`;
+                        }
+                    });
+
+                    // Trigger download
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', encodedUri);
+                    link.setAttribute('download', `${place}_forecast.csv`);
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            }
+        ]
+    });
 }
 
 
