@@ -30,7 +30,7 @@
             <h2 class="subsection-title">System Architecture</h2>
             <hr class="section-divider">
             <div class="architecture-content">
-                <p class="architecture-text">
+                                        <p class="architecture-text">
                     The system architecture is fronted by an API Gateway with 3 different endpoints, mimicking the
                     set-up of Google's endpoints. The Lambda function then handles events according to the exact API
                     Gateway endpoint path the browser's request was sent to (e.g. path "/get-current" causes Lambda to
@@ -44,6 +44,13 @@
                     Lambda authenticates by providing the API key which is pulled from Secrets Manager. Currently, this
                     is using my personal Google API key.
                 </p>
+                <div class="architecture-text">
+                    <p>
+                        <b>Source code:
+                        </b><a
+                            href="https://github.com/kaushishere/World-Air-Quality-Index-AQI-Tool/tree/main">Link</a>
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -157,7 +164,7 @@
 
                 <div class="architecture-text">
                     <p>
-                        <b>Source code:
+                        <b>Code for sagemaker pipeline:
                         </b><a
                             href="https://github.com/kaushishere/World-Air-Quality-Index-AQI-Tool/blob/main/pipelines/deepar.ipynb">Link</a>
                     </p>
