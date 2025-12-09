@@ -119,6 +119,21 @@ function updatePage() {
     })
     const tableBody = table.querySelector('tbody')
     tableBody.innerHTML = htmlContent
+
+    const globeBtn = document.querySelector('.header-globe-btn');
+    if (savedPlaces.length === 0) {
+        globeBtn.classList.add('highlight');
+    } else {
+        globeBtn.classList.remove('highlight');
+    }
+
+    document.getElementById("emptyMessage").style.display =
+    savedPlaces.length === 0 ? "block" : "none";
+
 }
 
-updatePage()
+document.addEventListener("headerLoaded", () => {
+    updatePage();
+});
+
+

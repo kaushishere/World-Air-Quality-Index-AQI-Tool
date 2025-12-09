@@ -13,6 +13,9 @@ async function loadHeader() {
             link.classList.add('active');
         }
     });
+
+    // notify header has been loaded
+    document.dispatchEvent(new Event("headerLoaded"));
 }
 
 document.addEventListener('DOMContentLoaded', loadHeader);

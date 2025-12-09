@@ -110,3 +110,19 @@ tr img.emoji {
     left: -100px;
 }
 
+.header-globe-btn.highlight {
+    animation: pulseGlow 1.2s infinite;
+    border: 2px solid #4aa3ff !important;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0px rgba(80, 160, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 14px rgba(80, 160, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 0px rgba(80, 160, 255, 0.4);
+    }
+}
